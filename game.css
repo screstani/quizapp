@@ -24,3 +24,28 @@
     padding: 1.5rem;
     width: 100%;
 }
+
+.correct {
+    background-color: #28a745;
+}
+
+.incorrect {
+    background-color: #dc3545;
+}
+
+/* hud */
+#hud {
+    /*side by side horizontally*/
+    display: flex;
+    /*coloca todo o espaço disponível entre os elementos*/
+    justify-content: space-between;
+}
+
+.hud-prefix {
+    text-align: center;
+    font-size: 2rem;
+}
+
+.hud-main-text {
+    text-align: center;
+}
