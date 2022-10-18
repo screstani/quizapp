@@ -55,6 +55,8 @@ h3 {
     align-items: center;
     max-width: 80rem;
     margin: 0 auto;
+    /* esse padding dá um pouco de espaço no caso da tela estar pequena*/
+    padding: 2rem;
 }
 
 .container > * {
