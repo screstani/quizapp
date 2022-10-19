@@ -1,7 +1,8 @@
 const question = document.getElementById("question");
 const choices = Array.from(document.getElementsByClassName("choice-text"));
-const questionCounterText = document.getElementById('questionCounter');
+const progressText = document.getElementById('progressText');
 const scoreText = document.getElementById('score');
+const progressBarFull = document.getElementById('progressBarFull');
 
 let currentQuestion = {};
 let acceptingAnswers = false;
@@ -66,13 +67,15 @@ startGame = () => {
 };
 
 getNewQuestion = () => {
-
-if(availableQuestions.length === 0 || questionCounter >= MAX_QUESTIONS) {
-    // go to the end page
-    return window.location.assign("end.html");
-}
+    if(availableQuestions.length === 0 || questionCounter >= MAX_QUESTIONS) {
+        localStorage.setItem('mostRecentScore', score);
+        // go to the end page
+        return window.location.assign("end.html");
+    }
     questionCounter ++;
-    questionCounterText.innerText = `${questionCounter} / ${MAX_QUESTIONS}`;
+    progressText.innerText = `Question ${questionCounter} / ${MAX_QUESTIONS}`;
+    //Updates the progress bar
+    progressBarFull.style.width = `${(questionCounter / MAX_QUESTIONS) * 100}%`;
 
     const questionIndex = Math.floor(Math.random() * availableQuestions.length);
     currentQuestion = availableQuestions[questionIndex];
@@ -80,8 +83,8 @@ if(availableQuestions.length === 0 || questionCounter >= MAX_QUESTIONS) {
 
     choices.forEach (choice => {
         //that's the way we retrieve that data-number set on each choice in game.html
-        const number = choice.dataset['number'];
-        choice.innerText = currentQuestion['choice' + number];
+        const number = choice.dataset["number"];
+        choice.innerText = currentQuestion["choice" + number];
     });
 
     //tira a questão já usada para evitar repetições
@@ -102,7 +105,7 @@ choices.forEach(choice => {
         //a comparação é entre string e number, entào double equals
         const classToApply = selectedAnswer==currentQuestion.answer ? "correct" : "incorrect";
         
-        if(classToApply === 'correct') {
+        if(classToApply === "correct") {
             incrementScore(CORRECT_BONUS);
         }
 
