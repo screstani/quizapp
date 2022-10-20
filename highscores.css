@@ -2,6 +2,7 @@
     list-style: none;
     padding-left: 0;
     margin-bottom: 4rem;
+    position: relative;
 }
 
 .high-score {
