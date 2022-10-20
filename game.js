@@ -13,6 +13,19 @@ let availableQuestions = [];
 
 let questions = [];
 
+function unEscape(htmlStr) {
+    htmlStr = htmlStr.replace(/&#039;/g, "\'");    
+    htmlStr = htmlStr.replace(/&quot;/g, "\'");    
+    htmlStr = htmlStr.replace(/&eacute;/g, "é");  
+    htmlStr = htmlStr.replace(/&aacute;/g, "á");  
+    htmlStr = htmlStr.replace(/&ocirc;/g, "ô");   
+    htmlStr = htmlStr.replace(/&rsquo;/g, "\'");     
+    htmlStr = htmlStr.replace(/&amp;/g, "&");        
+    htmlStr = htmlStr.replace(/&lt;/g, "<"); 
+    htmlStr = htmlStr.replace(/&auml;/g, "ä"); 
+    return htmlStr;
+ }
+
 fetch(
     'https://opentdb.com/api.php?amount=50&category=23&type=multiple'
 )
@@ -22,7 +35,7 @@ fetch(
     .then((loadedQuestions) => {
         console.log(loadedQuestions.results);
         questions = loadedQuestions.results.map(loadedQuestion => {
-            const formattedQuestion = {
+            let formattedQuestion = {
                 question: loadedQuestion.question
             };
 
@@ -37,6 +50,13 @@ fetch(
             answerChoices.forEach((choice, index) => {
                 formattedQuestion["choice" + (index + 1)] = choice;
             });
+
+            let myQuestions = JSON.stringify(formattedQuestion);
+            let decQuestions = unEscape(myQuestions);
+            let newQuestions = JSON.parse(decQuestions);
+            formattedQuestion = newQuestions;
+
+            console.log(formattedQuestion);
 
             return formattedQuestion;
         });
