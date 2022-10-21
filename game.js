@@ -5,6 +5,7 @@ const scoreText = document.getElementById('score');
 const progressBarFull = document.getElementById('progressBarFull');
 const loader = document.getElementById('loader');
 const game = document.getElementById('game');
+
 let currentQuestion = {};
 let acceptingAnswers = false;
 let score = 0;
@@ -16,6 +17,7 @@ let questions = [];
 function unEscape(htmlStr) {
     htmlStr = htmlStr.replace(/&#039;/g, "\'");    
     htmlStr = htmlStr.replace(/&quot;/g, "\'");    
+    htmlStr = htmlStr.replace(/&eocute;/g, "ó");  
     htmlStr = htmlStr.replace(/&eacute;/g, "é");  
     htmlStr = htmlStr.replace(/&aacute;/g, "á");  
     htmlStr = htmlStr.replace(/&ocirc;/g, "ô");   
