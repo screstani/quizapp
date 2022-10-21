@@ -1,8 +1,7 @@
 # History Quiz App #
 
-![Jogo] (https://github.com/screstani/quizapp/blob/main/tela jogo.png)
-
-![Resultados Salvos] (https://github.com/screstani/quizapp/blob/main/tela resultados.png)
+![tela jogo](https://user-images.githubusercontent.com/68524965/197236058-8783c470-0284-4445-aeb2-3bc15c7751bc.png)
+![tela resultados](https://user-images.githubusercontent.com/68524965/197236069-a115929e-b4cb-4bd2-a1d1-577a00c2f188.png)
 
 This is a simple Quiz App developed using **HTML, CSS and JavaScript**. 
 It loads questions from a 3rd party API, track and display high scores.
