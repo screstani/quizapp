@@ -25,6 +25,9 @@ function unEscape(htmlStr) {
     htmlStr = htmlStr.replace(/&amp;/g, "&");        
     htmlStr = htmlStr.replace(/&lt;/g, "<"); 
     htmlStr = htmlStr.replace(/&auml;/g, "ä"); 
+    htmlStr = htmlStr.replace(/&uuml;/g, "ü");
+    htmlStr = htmlStr.replace(/&ouml;/g, "ö");
+    htmlStr = htmlStr.replace(/&Ouml;/g, "Ö");
     return htmlStr;
  }
 
